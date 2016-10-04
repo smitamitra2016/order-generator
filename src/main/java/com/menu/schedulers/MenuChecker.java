@@ -1,7 +1,6 @@
 package com.menu.schedulers;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.xml.bind.JAXBException;
 
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.menu.beans.FoodItem;
 import com.menu.service.MenuParser;
 
 @Component
@@ -26,6 +24,5 @@ public class MenuChecker {
 	public void updateMenu() throws JAXBException{
 		log.info("Menu updated at " + new Date());
 		menuParser.updateMenu();
-		List<FoodItem> foodItems = menuParser.getMenu();
 	}
 }

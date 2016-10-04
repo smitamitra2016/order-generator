@@ -37,6 +37,10 @@ public class FileUtilsTest {
 		if(menu!=null && menu.exists()){
 			menu.delete();
 		}
+		File backup = new File("testMenu.xml.bkp");
+		if(backup.exists()){
+			backup.delete();
+		}
 	}
 	
 	@Test

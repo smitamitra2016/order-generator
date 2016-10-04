@@ -48,7 +48,7 @@ public class MenuParser {
 	}
 
 	public void updateMenu() throws JAXBException {
-		if (menu == null || fileUtils.checkExists(filePath)) {
+		if (menu == null && fileUtils.checkExists(filePath)) {
 			Menu itemMenu = menuParser(filePath);
 			menu = parseMenuItems(itemMenu);
 			fileUtils.renameFile(filePath);
