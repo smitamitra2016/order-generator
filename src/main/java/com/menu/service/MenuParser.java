@@ -40,7 +40,7 @@ public class MenuParser {
 			FoodItem foodItem = null;
 			List<Menu.Item> items = menu.getItem();
 			for (Menu.Item item : items) {
-				foodItem = new FoodItem(item.getName(), item.getType());
+				foodItem = new FoodItem(item.getName(), item.getType(), item.getTimeToPrepare());
 				foodItems.add(foodItem);
 			}
 		}
@@ -48,7 +48,7 @@ public class MenuParser {
 	}
 
 	public void updateMenu() throws JAXBException {
-		if (menu == null && fileUtils.checkExists(filePath)) {
+		if (fileUtils.checkExists(filePath) || menu == null) {
 			Menu itemMenu = menuParser(filePath);
 			menu = parseMenuItems(itemMenu);
 			fileUtils.renameFile(filePath);

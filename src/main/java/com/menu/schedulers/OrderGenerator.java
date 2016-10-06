@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.SocketException;
-import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.List;
 
@@ -40,7 +38,7 @@ public class OrderGenerator {
 			while (orderNum == 0) {
 				orderNum = utility.generateRandom(6);
 			}
-			String numOfOrders = String.valueOf(utility.generateRandom(orderNum));
+			String numOfOrders = String.valueOf(orderNum);
 			StringBuffer order = new StringBuffer();
 			order.append(item).append(":").append(numOfOrders).append(":").append(table);
 			return order.toString();
@@ -48,7 +46,7 @@ public class OrderGenerator {
 		return null;
 	}
 
-	@Scheduled(fixedDelay = 60000)
+	@Scheduled(fixedDelay = 20000)
 	public void sendOrder() throws IOException {
 		String order = generateOrder();
 		if (order != null) {
